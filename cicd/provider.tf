@@ -6,7 +6,7 @@ terraform {
         }
     }
     backend "s3" {
-      bucket = "mydaws-remote-state1"
+      bucket = "mydaws-remote-state2"
       key  = "expense-cicd-jenkins"
       region = "us-east-1"
       dynamodb_table = "mydaws-locking"

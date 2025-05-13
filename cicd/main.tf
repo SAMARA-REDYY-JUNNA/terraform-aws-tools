@@ -4,8 +4,8 @@ module "jenkins" {
   name = "jenkins-tf"
 
   instance_type          = "t3.small"
-  vpc_security_group_ids = ["sg-00f13598c28df63c9"] #replace your SG
-  subnet_id = "subnet-0e0ca9908594ce7ab" #replace your Subnet
+  vpc_security_group_ids = ["sg-09fbfa8590c3d875e"] #replace your SG
+  subnet_id = "subnet-007b00f37347495fd" #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins.sh")
   tags = {
@@ -19,9 +19,9 @@ module "jenkins_agent" {
   name = "jenkins-agent"
 
   instance_type          = "t3.small"
-  vpc_security_group_ids = ["sg-00f13598c28df63c9"]
+  vpc_security_group_ids = ["sg-09fbfa8590c3d875e"]
   # convert StringList to list and get first element
-  subnet_id = "subnet-0e0ca9908594ce7ab"
+  subnet_id = "subnet-007b00f37347495fd"
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins-agent.sh")
   tags = {
@@ -43,9 +43,9 @@ module "nexus" {
   name = "nexus"
 
   instance_type          = "t3.medium"
-  vpc_security_group_ids = ["sg-00f13598c28df63c9"]
+  vpc_security_group_ids = ["sg-09fbfa8590c3d875e"]
   # convert StringList to list and get first element
-  subnet_id = "subnet-0e0ca9908594ce7ab"
+  subnet_id = "subnet-007b00f37347495fd"
   ami = data.aws_ami.nexus_ami_info.id
   key_name = aws_key_pair.tools.key_name
   root_block_device = [
