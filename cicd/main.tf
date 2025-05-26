@@ -8,6 +8,13 @@ module "jenkins" {
   subnet_id = "subnet-007b00f37347495fd" #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins.sh")
+
+  root_block_device {
+    volume_size = 50  # Set root volume size to 50GB
+    volume_type = "gp3"  # Use gp3 for better performance (optional)
+  }
+
+  
   tags = {
     Name = "jenkins-tf"
   }
@@ -24,6 +31,12 @@ module "jenkins_agent" {
   subnet_id = "subnet-007b00f37347495fd"
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins-agent.sh")
+
+  root_block_device {
+    volume_size = 50  # Set root volume size to 50GB
+    volume_type = "gp3"  # Use gp3 for better performance (optional)
+  }
+
   tags = {
     Name = "jenkins-agent"
   }
