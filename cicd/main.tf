@@ -9,7 +9,7 @@ module "jenkins" {
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins.sh")
 
-  root_block_device [{
+  root_block_device = [{
     volume_size = 50  # Set root volume size to 50GB
     volume_type = "gp3"  # Use gp3 for better performance (optional)
   }]
@@ -32,7 +32,7 @@ module "jenkins_agent" {
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins-agent.sh")
 
-  root_block_device [{
+  root_block_device = [{
     volume_size = 50  # Set root volume size to 50GB
     volume_type = "gp3"  # Use gp3 for better performance (optional)
   }]
