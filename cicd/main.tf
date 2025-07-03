@@ -9,7 +9,7 @@ module "jenkins" {
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins.sh")
 
-  module "jenkins" {
+module "jenkins" {
   # other variables...
   root_block_device = {
     volume_size = 50
@@ -34,7 +34,7 @@ module "jenkins_agent" {
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins-agent.sh")
 
- module "jenkins_agent" {
+module "jenkins_agent" {
   # other variables...
   root_block_device = {
     volume_size = 50
